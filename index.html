@@ -10,50 +10,48 @@
 }    
 
 .emoji {
-    font-size: 550px;
+    height: 100%;
+    background-image: url('tulips.png');
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
-.blinder {
+#curtain {
     z-index:9;
     background-color: white;
     height: 100%;
 }
 
 </style>
-
 <body>
-<div class='box'>
-    <div class='emoji'>🌷</div>
+<div class='container'>
+    <div class='box'>
+        <div class='emoji'></div>
+    </div>
+    <div class='box'  id='curtain'></div>
+    </div>
 </div>
-<div class='box blinder'></div>
-</div>
-    
-</body>
-    
 
-<script src='script.js'></script>
+</body>
+
 <script>
-function changeHeight(){
-    blinder.style.height = blinderHeight.toString() +'%'
-    blinderHeight--
+
+const dt = new Date()
+const initSecond = dt.getSeconds() + (60 * dt.getMinutes()) + (60 * 60 * dt.getHours());
+const deletionRate = 0.0011574074074074073
+const curtain = document.getElementById('curtain')
+
+let curtainHeight = 100 - (initSecond * deletionRate)
+
+const changeHeight = () => {
+    if (curtainHeight > 0){
+        curtain.style.height = curtainHeight.toString() +'%'
+        curtainHeight = curtainHeight-deletionRate
+    } else {curtainHeight = 100}
 }
 
- function stop() {
-
-    clearInterval(intervalID);   
- }
-
- function start() {
-    intervalID = setInterval(changeHeight, 100); 
- }
-
-
-let blinderHeight = 100
-let blinder = document.getElementsByClassName('blinder')[0]
-let intervalID;
-
-if (blinderHeight > 0){start()}
-else {stop()}
+setInterval(changeHeight, 1000); 
 
 </script>
 </html>
