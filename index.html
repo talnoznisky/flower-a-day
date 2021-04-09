@@ -7,6 +7,10 @@
 * {
     margin: 0;
 }
+a {
+    color: whitesmoke;
+}
+
 
 body {
     background-color: E19B9F;
@@ -15,8 +19,7 @@ body {
 .header {
     color: whitesmoke;
     padding: 3px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
 .container {
@@ -40,6 +43,10 @@ body {
     position: absolute;
 }
 
+#about {
+    display: inline;
+}
+
 #curtain {
     z-index:9;
     background-color:E19B9F;
@@ -58,14 +65,17 @@ body {
 </style>
 <body>
 <div class='container'>
-    <div class='header'>tulips are <div id='percent'></div> loaded</div>
+    <div class='header'>
+        <a class='about' href='about.html'>about</a> | tulips are <div id='percent'></div> loaded 
+        
+    </div>
     <div class='box'>
         <div class='emoji'></div>
     </div>
     <div class='box' id='curtain'></div>
     </div>
 </div>
-
+<footer></footer>
 </body>
 
 <script>
